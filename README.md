@@ -1,30 +1,19 @@
-# MichaelOS Launcher — iPhone test
+# MichaelOS Launcher — Authentication Bootstrap Test
 
-This is a static wrapper around the existing MichaelOS Apps Script deployment.
+## Before testing
+Deploy MichaelOS 6.5.133.
 
-## Target MichaelOS URL
-https://script.google.com/macros/s/AKfycbyrW9FGCk2c4Hx51qH5Mbkmi9Nt2eibY1ubFZ66xzxAzgZDgq5PjNMTcQixt-4R03qz1Q/exec
+## iPhone test
+1. Push this launcher to the existing `MichaelOS-Launcher` GitHub Pages repo.
+2. Remove the old Home Screen MichaelOS launcher.
+3. Open `https://mbukantz.github.io/MichaelOS-Launcher/` in Safari.
+4. Add to Home Screen with **Open as Web App ON**.
+5. Launch the M/B icon.
+6. When the standalone launcher shows the 401, wait for the initialization card and tap **Initialize MichaelOS**.
+7. Apps Script loads top-level. If Google needs an account/auth step, complete it.
+8. The bootstrap page redirects automatically back to the launcher.
+9. Check whether embedded MichaelOS now loads instead of 401.
 
-## Recommended test host
-GitHub Pages, in a separate repository such as `MichaelOS-Launcher`.
+If it still returns 401 after this sequence, the first-party cookie is not being accepted in the third-party iframe context and this iframe architecture is not viable on iOS standalone mode.
 
-## Test sequence
-1. Deploy MichaelOS 6.5.132 first. It adds `XFrameOptionsMode.ALLOWALL`.
-2. Publish this folder as a static site.
-3. Open the Pages URL on the iPhone in Safari.
-4. Confirm MichaelOS renders without the Apps Script warning chrome.
-5. Test:
-   - Main → Calendar → Home → Rangers → Finance → Rules → Mail Home.
-   - Refresh buttons.
-   - Calendar data and event creation.
-   - Gmail Rules / Mail Home data.
-   - Gmail deep links to the Gmail app.
-6. If authentication fails inside the frame, use the temporary “Open MichaelOS directly” fallback.
-7. Only after the iframe works reliably, use Safari Share → Add to Home Screen.
-
-## Important
-Apps Script's `ALLOWALL` removes its default X-Frame-Options protection. Keep this as a test until you decide whether the launcher is worth making permanent.
-
-
-## Icon
-This launcher uses the exact `michaelos-app-icon.png` from the MichaelOS 6.5.132 build for the iPhone Home Screen / PWA icon.
+Custom M/B Home Screen icons are retained.

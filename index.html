@@ -87,16 +87,25 @@
       line-height: 1.35;
     }
     #fallback.visible { display: block; }
+    #fallback strong { display:block; margin-bottom:5px; font-size:13px; }
+    #fallback span { display:block; color:#cbd5e1; }
+    #fallback button,
     #fallback a {
-      display: inline-flex;
-      margin-top: 8px;
-      padding: 7px 10px;
-      border-radius: 8px;
-      background: #fff;
-      color: #10264b;
-      text-decoration: none;
-      font-weight: 800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      margin-top:8px;
+      padding:7px 10px;
+      border:0;
+      border-radius:8px;
+      font:inherit;
+      font-weight:800;
+      text-decoration:none;
+      cursor:pointer;
     }
+    #fallback button { background:#fff; color:#10264b; }
+    #fallback a { margin-left:5px; background:rgba(255,255,255,.11); color:#fff; }
   </style>
 </head>
 <body>
@@ -110,29 +119,58 @@
       allow="clipboard-read; clipboard-write"
     ></iframe>
     <div id="fallback">
-      MichaelOS may be blocked by Google authentication inside the launcher on this device.
-      <br>
-      <a href="https://script.google.com/macros/s/AKfycbyrW9FGCk2c4Hx51qH5Mbkmi9Nt2eibY1ubFZ66xzxAzgZDgq5PjNMTcQixt-4R03qz1Q/exec" target="_top" rel="noopener">Open MichaelOS directly</a>
+      <strong>MichaelOS needs one initialization step.</strong>
+      <span>Open MichaelOS directly once inside this app so Google can establish the session, then you’ll return here automatically.</span>
+      <button id="initializeButton" type="button">Initialize MichaelOS</button>
+      <a id="directLink" href="https://script.google.com/macros/s/AKfycbyrW9FGCk2c4Hx51qH5Mbkmi9Nt2eibY1ubFZ66xzxAzgZDgq5PjNMTcQixt-4R03qz1Q/exec" rel="noopener">Open directly instead</a>
     </div>
   </main>
   <script>
     const frame = document.getElementById("app");
     const loading = document.getElementById("loading");
     const fallback = document.getElementById("fallback");
+    const initializeButton = document.getElementById("initializeButton");
+    const BOOTSTRAP_URL = "https://script.google.com/macros/s/AKfycbyrW9FGCk2c4Hx51qH5Mbkmi9Nt2eibY1ubFZ66xzxAzgZDgq5PjNMTcQixt-4R03qz1Q/exec?launcherInit=1&returnUrl=https%3A%2F%2Fmbukantz.github.io%2FMichaelOS-Launcher%2F%3Fbootstrapped%3D1";
+
+    let frameLoaded = false;
+
+    try {
+      const current = new URL(window.location.href);
+      if (current.searchParams.get("bootstrapped") === "1") {
+        sessionStorage.setItem("michaelosLauncherJustBootstrapped","1");
+        current.searchParams.delete("bootstrapped");
+        history.replaceState(null, "", current.pathname + current.search + current.hash);
+      }
+    } catch (e) {}
 
     frame.addEventListener("load", () => {
+      frameLoaded = true;
       window.setTimeout(() => loading.classList.add("hidden"), 180);
     });
 
-    // A cross-origin launcher cannot inspect MichaelOS's DOM. If Google auth
-    // fails inside the iframe, expose an unobtrusive direct-open fallback.
+    initializeButton.addEventListener("click", () => {
+      window.location.href = BOOTSTRAP_URL;
+    });
+
+    try {
+      if (sessionStorage.getItem("michaelosLauncherJustBootstrapped") === "1") {
+        sessionStorage.removeItem("michaelosLauncherJustBootstrapped");
+        const retry = new URL(frame.src);
+        retry.searchParams.set("_retry", Date.now().toString());
+        frame.src = retry.toString();
+      }
+    } catch (e) {}
+
+    // We cannot read a cross-origin iframe's HTTP status. Show the bootstrap
+    // option after a few seconds so it is available when the visible frame is 401.
     window.setTimeout(() => {
       fallback.classList.add("visible");
-      window.setTimeout(() => fallback.classList.remove("visible"), 6500);
-    }, 9000);
+    }, 5000);
 
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) fallback.classList.remove("visible");
+      if (!document.hidden && frameLoaded) {
+        window.setTimeout(() => loading.classList.add("hidden"), 100);
+      }
     });
   </script>
 </body>
