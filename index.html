@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10264b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MichaelOS">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <title>MichaelOS</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+  <style>
+    :root {
+      color-scheme: light dark;
+      background: #081426;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #081426;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #shell {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(58,116,224,.26), transparent 36%),
+        radial-gradient(circle at 92% 92%, rgba(124,58,237,.20), transparent 40%),
+        #081426;
+    }
+    #app {
+      display: block;
+      width: 100%;
+      height: 100dvh;
+      min-height: 100%;
+      border: 0;
+      background: #081426;
+    }
+    #loading {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    #loading.hidden { opacity: 0; }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg,#2563eb,#7c3aed 55%,#ef4444);
+      color: #fff;
+      box-shadow: 0 16px 48px rgba(0,0,0,.32);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -.06em;
+    }
+    #fallback {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: max(12px, var(--safe-bottom));
+      z-index: 4;
+      display: none;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px;
+      background: rgba(8,20,38,.88);
+      backdrop-filter: blur(18px);
+      color: #fff;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    #fallback.visible { display: block; }
+    #fallback a {
+      display: inline-flex;
+      margin-top: 8px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: #fff;
+      color: #10264b;
+      text-decoration: none;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <main id="shell">
+    <div id="loading" aria-hidden="true"><div class="mark">M/B</div></div>
+    <iframe
+      id="app"
+      title="MichaelOS"
+      src="https://script.google.com/macros/s/AKfycbyrW9FGCk2c4Hx51qH5Mbkmi9Nt2eibY1ubFZ66xzxAzgZDgq5PjNMTcQixt-4R03qz1Q/exec?launcher=1"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="clipboard-read; clipboard-write"
+    ></iframe>
+    <div id="fallback">
+      MichaelOS may be blocked by Google authentication inside the launcher on this device.
+      <br>
+      <a href="https://script.google.com/macros/s/AKfycbyrW9FGCk2c4Hx51qH5Mbkmi9Nt2eibY1ubFZ66xzxAzgZDgq5PjNMTcQixt-4R03qz1Q/exec" target="_top" rel="noopener">Open MichaelOS directly</a>
+    </div>
+  </main>
+  <script>
+    const frame = document.getElementById("app");
+    const loading = document.getElementById("loading");
+    const fallback = document.getElementById("fallback");
+
+    frame.addEventListener("load", () => {
+      window.setTimeout(() => loading.classList.add("hidden"), 180);
+    });
+
+    // A cross-origin launcher cannot inspect MichaelOS's DOM. If Google auth
+    // fails inside the iframe, expose an unobtrusive direct-open fallback.
+    window.setTimeout(() => {
+      fallback.classList.add("visible");
+      window.setTimeout(() => fallback.classList.remove("visible"), 6500);
+    }, 9000);
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) fallback.classList.remove("visible");
+    });
+  </script>
+</body>
+</html>
