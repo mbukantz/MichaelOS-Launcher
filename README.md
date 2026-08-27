@@ -24,3 +24,7 @@ GitHub Pages, in a separate repository such as `MichaelOS-Launcher`.
 
 ## Important
 Apps Script's `ALLOWALL` removes its default X-Frame-Options protection. Keep this as a test until you decide whether the launcher is worth making permanent.
+
+
+## Icon
+This launcher uses the exact `michaelos-app-icon.png` from the MichaelOS 6.5.132 build for the iPhone Home Screen / PWA icon.
