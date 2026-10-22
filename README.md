@@ -17,3 +17,7 @@ Deploy MichaelOS 6.5.133.
 If it still returns 401 after this sequence, the first-party cookie is not being accepted in the third-party iframe context and this iframe architecture is not viable on iOS standalone mode.
 
 Custom M/B Home Screen icons are retained.
+
+## Approved branding
+
+Icons and the 72px loading mark use the approved MichaelOS artwork. Their content version is `8f833ecc0d4d`. Regenerate all sizes from the master in `mbukantz/MichaelOS` using `python scripts/generate-branding.py --launcher ../MichaelOS-Launcher`; add `--check` to verify. Do not edit generated icon sizes independently. Existing Home Screen installs may require removal and re-addition to refresh the installed icon.
