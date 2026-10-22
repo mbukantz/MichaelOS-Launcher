@@ -10,9 +10,9 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   <title>MichaelOS</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+  <link rel="manifest" href="./manifest.webmanifest?v=8f833ecc0d4d">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=8f833ecc0d4d">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=8f833ecc0d4d">
   <style>
     :root {
       color-scheme: light dark;
@@ -63,7 +63,7 @@
       width: 72px;
       height: 72px;
       border-radius: 20px;
-      background: linear-gradient(135deg,#2563eb,#7c3aed 55%,#ef4444);
+      object-fit: contain;
       color: #fff;
       box-shadow: 0 16px 48px rgba(0,0,0,.32);
       font-size: 24px;
@@ -110,7 +110,7 @@
 </head>
 <body>
   <main id="shell">
-    <div id="loading" aria-hidden="true"><div class="mark">M/B</div></div>
+    <div id="loading" aria-hidden="true"><img class="mark" src="./michaelos-app-icon.png?v=8f833ecc0d4d" alt="" width="72" height="72" decoding="async" fetchpriority="high"></div>
     <iframe
       id="app"
       title="MichaelOS"
