@@ -1,10 +1,10 @@
 # MichaelOS Launcher
 
-[Open MichaelOS](https://mbukantz.github.io/MichaelOS-Launcher/) · [Download the approved icon](michaelos-app-icon.png?v=57f1c0d3b1b2)
+[Open MichaelOS](https://mbukantz.github.io/MichaelOS-Launcher/) · [Download the iPhone icon](icon-512.png?v=b580d328e44b)
 
 ## Approved branding
 
-The approved shield has centennial-blue outer trim and a solid ivory (#F5EBDD) background. The artwork content version is `57f1c0d3b1b2`. The loading mark, browser favicon, Apple touch icon and manifest icons are generated from the full-resolution approved master in `mbukantz/MichaelOS`. Existing layout, application target, authentication controls and navigation behavior are unchanged.
+The approved shield has centennial-blue outer trim. Loading artwork and browser favicons have a transparent exterior; iPhone/Home Screen and Apple touch icons use solid ivory (#F5EBDD). The artwork content version is `b580d328e44b`. The transparent loading image (`michaelos-brand-logo.png`), browser favicon, ivory Apple touch icon and ivory manifest icons are generated from the full-resolution approved master in `mbukantz/MichaelOS`. Existing layout, application target, authentication controls and navigation behavior are unchanged.
 
 From the MichaelOS repository, generate or verify both repositories with:
 
@@ -13,11 +13,11 @@ python3 scripts/generate-branding.py --launcher ../MichaelOS-Launcher
 python3 scripts/generate-branding.py --launcher ../MichaelOS-Launcher --check
 ```
 
-`favicon-57f1c0d3b1b2.png` provides the same approved 32px artwork at a URL ending in `.png` for Apps Script metadata. Retain older versioned favicon files for existing app releases. Historical comparison PNGs remain available at their original download URLs; they are not used as active app icons.
+`favicon-b580d328e44b.png` provides the same approved 32px artwork at a URL ending in `.png` for Apps Script metadata. Retain older versioned favicon files for existing app releases. Historical comparison PNGs remain available at their original download URLs; they are not used as active app icons.
 
 ## iPhone: choose the exact image with Shortcuts
 
-1. In Chrome, open [the approved icon](michaelos-app-icon.png?v=57f1c0d3b1b2), press and hold it, and save it to Photos.
+1. In Chrome, open [the iPhone icon](icon-512.png?v=b580d328e44b), press and hold it, and save it to Photos.
 2. In Shortcuts, create a shortcut named **MichaelOS**.
 3. Add a **URL** action with this address, followed by **Open URLs**:
 
