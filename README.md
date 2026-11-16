@@ -1,53 +1,39 @@
-# MichaelOS Launcher — Authentication Bootstrap Test
+# MichaelOS Launcher
 
-## Before testing
-Deploy MichaelOS 6.5.133.
-
-## iPhone test
-1. Push this launcher to the existing `MichaelOS-Launcher` GitHub Pages repo.
-2. Remove the old Home Screen MichaelOS launcher.
-3. Open `https://mbukantz.github.io/MichaelOS-Launcher/` in Safari.
-4. Add to Home Screen with **Open as Web App ON**.
-5. Launch the M/B icon.
-6. When the standalone launcher shows the 401, wait for the initialization card and tap **Initialize MichaelOS**.
-7. Apps Script loads top-level. If Google needs an account/auth step, complete it.
-8. The bootstrap page redirects automatically back to the launcher.
-9. Check whether embedded MichaelOS now loads instead of 401.
-
-If it still returns 401 after this sequence, the first-party cookie is not being accepted in the third-party iframe context and this iframe architecture is not viable on iOS standalone mode.
-
-Custom M/B Home Screen icons are retained.
+[Open MichaelOS](https://mbukantz.github.io/MichaelOS-Launcher/) · [Download the approved icon](michaelos-app-icon.png?v=57f1c0d3b1b2)
 
 ## Approved branding
 
-Icons and the 72px loading mark use the approved MichaelOS artwork. Their content version is `6716ae216af6`. Regenerate all sizes from the master in `mbukantz/MichaelOS` using `python scripts/generate-branding.py --launcher ../MichaelOS-Launcher`; add `--check` to verify. Do not edit generated icon sizes independently. Existing Home Screen installs may require removal and re-addition to refresh the installed icon.
+The approved shield has centennial-blue outer trim and a solid ivory (#F5EBDD) background. The artwork content version is `57f1c0d3b1b2`. The loading mark, browser favicon, Apple touch icon and manifest icons are generated from the full-resolution approved master in `mbukantz/MichaelOS`. Existing layout, application target, authentication controls and navigation behavior are unchanged.
 
-The 2026-11-16 approved shield has a transparent exterior, jersey-reference blue, subtle skate texture, stitched border and small puck. Existing loading dimensions and authentication behavior are unchanged.
+From the MichaelOS repository, generate or verify both repositories with:
 
-`favicon-6716ae216af6.png` is the same approved 32px artwork at a versioned filename ending in `.png`. Apps Script uses this direct URL so image-type identification does not depend on parsing a cache-busting query string. Existing launcher favicon/touch links are unchanged.
+```sh
+python3 scripts/generate-branding.py --launcher ../MichaelOS-Launcher
+python3 scripts/generate-branding.py --launcher ../MichaelOS-Launcher --check
+```
 
-## iPhone Shortcuts image options
+`favicon-57f1c0d3b1b2.png` provides the same approved 32px artwork at a URL ending in `.png` for Apps Script metadata. Retain older versioned favicon files for existing app releases. Historical comparison PNGs remain available at their original download URLs; they are not used as active app icons.
 
-Save one PNG below, then choose it in Shortcuts under **Add to Home Screen → icon → Choose Photo**. Each 512px RGB image composites the approved shield onto a solid background without redrawing it. App and launcher icons retain the approved transparency.
+## iPhone: choose the exact image with Shortcuts
 
-- [Warm ivory — #F5EBDD](michaelos-shortcuts-ivory-6716ae216af6.png)
-- [Soft silver — #E6E9EF](michaelos-shortcuts-silver-6716ae216af6.png)
-- [Slate gray — #758394](michaelos-shortcuts-slate-6716ae216af6.png)
+1. In Chrome, open [the approved icon](michaelos-app-icon.png?v=57f1c0d3b1b2), press and hold it, and save it to Photos.
+2. In Shortcuts, create a shortcut named **MichaelOS**.
+3. Add a **URL** action with this address, followed by **Open URLs**:
 
-### Richer shortcut background options
+```text
+googlechromes://script.google.com/macros/s/AKfycbyrW9FGCk2c4Hx51qH5Mbkmi9Nt2eibY1ubFZ66xzxAzgZDgq5PjNMTcQixt-4R03qz1Q/exec
+```
 
-- [Burgundy — #7B2D3E](michaelos-shortcuts-burgundy-6716ae216af6.png)
-- [Burnished copper — #A96542](michaelos-shortcuts-copper-6716ae216af6.png)
-- [Deep teal — #285F64](michaelos-shortcuts-teal-6716ae216af6.png)
+4. Open the shortcut’s name menu, choose **Add to Home Screen**, tap its icon, and choose the saved shield from Photos.
+5. Tap **Add**. The address opens MichaelOS directly in Chrome and remains valid through app updates. A custom shortcut photo does not automatically refresh when the website’s artwork changes.
 
-### Three horizontal bands
+Chrome also offers **Share → Add to Home Screen** from the launcher URL. Existing iOS installations may retain an older icon; Shortcuts provides explicit image selection.
 
-[Ivory / centennial blue / ivory shortcut icon](michaelos-shortcuts-ivory-blue-stripes-6716ae216af6.png): three approximately equal horizontal bands behind the approved shield. Ivory is #F5EBDD; blue #0B4F9E is the median of the approved shield’s blue field. The download is a 512px RGB PNG for Shortcuts.
+## Google sign-in and the embedded launcher
 
-### Outer centennial-blue outline
+The launcher embeds the existing Apps Script application. Its **Initialize MichaelOS** and **Open directly instead** controls open Google in the top-level browser when an embedded session is unavailable. Complete Google sign-in as needed. Embedded access depends on the browser’s cookie/session behavior; this branding update does not change it. The Shortcuts address above opens the app directly rather than depending on the launcher iframe.
 
-[Striped shortcut icon with outer centennial-blue outline](michaelos-shortcuts-blue-outline-stripes-6716ae216af6.png) · [Transparent outlined shield](michaelos-shield-blue-outline-6716ae216af6.png). A smooth five-pixel outside contour uses the approved shield’s median centennial blue (#0B4F9E). All opaque original shield pixels, the three background bands and 512px canvas are preserved. These are optional review/download images; app icon references are unchanged.
+## Publication order
 
-### Solid ivory with centennial-blue outer trim
-
-[Current solid-ivory shortcut icon](michaelos-shortcuts-blue-outline-ivory-6716ae216af6.png): the same blue-outlined shield on a uniform #F5EBDD background, with no background stripe. 512px RGB PNG for iPhone Shortcuts.
+Merge and verify the launcher’s GitHub Pages publication before releasing the matching MichaelOS branding PR. The app’s merged commit must pass its required validation and publish to Preview before the owner runs a fresh **Test & Deploy**. Merging the app PR alone does not deploy production.
