@@ -20,4 +20,6 @@ Custom M/B Home Screen icons are retained.
 
 ## Approved branding
 
-Icons and the 72px loading mark use the approved MichaelOS artwork. Their content version is `8f833ecc0d4d`. Regenerate all sizes from the master in `mbukantz/MichaelOS` using `python scripts/generate-branding.py --launcher ../MichaelOS-Launcher`; add `--check` to verify. Do not edit generated icon sizes independently. Existing Home Screen installs may require removal and re-addition to refresh the installed icon.
+Icons and the 72px loading mark use the approved MichaelOS artwork. Their content version is `6716ae216af6`. Regenerate all sizes from the master in `mbukantz/MichaelOS` using `python scripts/generate-branding.py --launcher ../MichaelOS-Launcher`; add `--check` to verify. Do not edit generated icon sizes independently. Existing Home Screen installs may require removal and re-addition to refresh the installed icon.
+
+The 2026-11-16 approved shield has a transparent exterior, jersey-reference blue, subtle skate texture, stitched border and small puck. Existing loading dimensions and authentication behavior are unchanged.
