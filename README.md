@@ -25,3 +25,7 @@ Icons and the 72px loading mark use the approved MichaelOS artwork. Their conten
 The 2026-11-16 approved shield has a transparent exterior, jersey-reference blue, subtle skate texture, stitched border and small puck. Existing loading dimensions and authentication behavior are unchanged.
 
 `favicon-6716ae216af6.png` is the same approved 32px artwork at a versioned filename ending in `.png`. Apps Script uses this direct URL so image-type identification does not depend on parsing a cache-busting query string. Existing launcher favicon/touch links are unchanged.
+
+## iPhone custom shortcut image
+
+For a white background in Shortcuts, save [the white-background shield](michaelos-shortcuts-white-6716ae216af6.png), then choose it under the shortcut’s **Add to Home Screen → icon → Choose Photo**. This 512px RGB copy is composited from the approved transparent icon onto white. App/launcher assets retain transparency.
