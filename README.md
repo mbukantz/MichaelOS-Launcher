@@ -39,3 +39,7 @@ Save one PNG below, then choose it in Shortcuts under **Add to Home Screen → i
 - [Burgundy — #7B2D3E](michaelos-shortcuts-burgundy-6716ae216af6.png)
 - [Burnished copper — #A96542](michaelos-shortcuts-copper-6716ae216af6.png)
 - [Deep teal — #285F64](michaelos-shortcuts-teal-6716ae216af6.png)
+
+### Three horizontal bands
+
+[Ivory / centennial blue / ivory shortcut icon](michaelos-shortcuts-ivory-blue-stripes-6716ae216af6.png): three approximately equal horizontal bands behind the approved shield. Ivory is #F5EBDD; blue #0B4F9E is the median of the approved shield’s blue field. The download is a 512px RGB PNG for Shortcuts.
