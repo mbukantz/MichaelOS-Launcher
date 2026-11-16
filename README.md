@@ -43,3 +43,7 @@ Save one PNG below, then choose it in Shortcuts under **Add to Home Screen → i
 ### Three horizontal bands
 
 [Ivory / centennial blue / ivory shortcut icon](michaelos-shortcuts-ivory-blue-stripes-6716ae216af6.png): three approximately equal horizontal bands behind the approved shield. Ivory is #F5EBDD; blue #0B4F9E is the median of the approved shield’s blue field. The download is a 512px RGB PNG for Shortcuts.
+
+### Outer red outline
+
+[Striped shortcut icon with outer red outline](michaelos-shortcuts-red-outline-stripes-6716ae216af6.png) · [Transparent outlined shield](michaelos-shield-red-outline-6716ae216af6.png). A smooth five-pixel outside contour uses the approved shield’s median red (#F10108). All opaque original shield pixels, the three background bands and 512px canvas are preserved. These are optional review/download images; app icon references are unchanged.
