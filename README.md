@@ -47,3 +47,7 @@ Save one PNG below, then choose it in Shortcuts under **Add to Home Screen → i
 ### Outer centennial-blue outline
 
 [Striped shortcut icon with outer centennial-blue outline](michaelos-shortcuts-blue-outline-stripes-6716ae216af6.png) · [Transparent outlined shield](michaelos-shield-blue-outline-6716ae216af6.png). A smooth five-pixel outside contour uses the approved shield’s median centennial blue (#0B4F9E). All opaque original shield pixels, the three background bands and 512px canvas are preserved. These are optional review/download images; app icon references are unchanged.
+
+### Solid ivory with centennial-blue outer trim
+
+[Current solid-ivory shortcut icon](michaelos-shortcuts-blue-outline-ivory-6716ae216af6.png): the same blue-outlined shield on a uniform #F5EBDD background, with no background stripe. 512px RGB PNG for iPhone Shortcuts.
