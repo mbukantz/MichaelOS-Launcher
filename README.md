@@ -33,3 +33,9 @@ Save one PNG below, then choose it in Shortcuts under **Add to Home Screen → i
 - [Warm ivory — #F5EBDD](michaelos-shortcuts-ivory-6716ae216af6.png)
 - [Soft silver — #E6E9EF](michaelos-shortcuts-silver-6716ae216af6.png)
 - [Slate gray — #758394](michaelos-shortcuts-slate-6716ae216af6.png)
+
+### Richer shortcut background options
+
+- [Burgundy — #7B2D3E](michaelos-shortcuts-burgundy-6716ae216af6.png)
+- [Burnished copper — #A96542](michaelos-shortcuts-copper-6716ae216af6.png)
+- [Deep teal — #285F64](michaelos-shortcuts-teal-6716ae216af6.png)
